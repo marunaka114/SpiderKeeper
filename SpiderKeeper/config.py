@@ -1,5 +1,6 @@
 # Statement for enabling the development environment
 import os
+from os import environ
 
 DEBUG = True
 
@@ -33,7 +34,7 @@ LOG_LEVEL = 'INFO'
 
 # spider services
 SERVER_TYPE = 'scrapyd'
-SERVERS = ['http://localhost:6800']
+SERVERS = ['http://localhost:{0}'.format(int(environ.get('PORT', 6800)))]
 
 # basic auth
 NO_AUTH = False
