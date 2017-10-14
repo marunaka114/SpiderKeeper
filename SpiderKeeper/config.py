@@ -34,7 +34,7 @@ LOG_LEVEL = 'INFO'
 
 # spider services
 SERVER_TYPE = 'scrapyd'
-SERVERS = ['http://localhost:{0}'.format(int(environ.get('PORT', 6800)))]
+SERVERS = [environ.get('SCRAPYD_URI')]
 
 # basic auth
 NO_AUTH = False
