@@ -38,6 +38,6 @@ SERVERS = ['http://localhost:{0}'.format(int(environ.get('PORT', 6800)))]
 
 # basic auth
 NO_AUTH = False
-BASIC_AUTH_USERNAME = 'admin'
-BASIC_AUTH_PASSWORD = 'admin'
+BASIC_AUTH_USERNAME = environ.get('AUTH_USR')
+BASIC_AUTH_PASSWORD = environ.get('AUTH_PWD')
 BASIC_AUTH_FORCE = True
