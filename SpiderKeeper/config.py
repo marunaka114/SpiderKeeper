@@ -38,6 +38,8 @@ SERVERS = [environ.get('SCRAPYD_URI')]
 
 # basic auth
 NO_AUTH = False
-BASIC_AUTH_USERNAME = environ.get('AUTH_USR')
-BASIC_AUTH_PASSWORD = environ.get('AUTH_PWD')
+#BASIC_AUTH_USERNAME = environ.get('AUTH_USR')
+BASIC_AUTH_USERNAME = 'admin'
+#BASIC_AUTH_PASSWORD = environ.get('AUTH_PWD')
+BASIC_AUTH_PASSWORD = 'admin'
 BASIC_AUTH_FORCE = True
