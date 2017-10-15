@@ -31,7 +31,7 @@ class SpiderInstance(Base):
     __tablename__ = 'sk_spider'
 
     spider_name = db.Column(db.String(100))
-    project_id = db.Column(db.INTEGER, nullable=False, index=True)
+    project_id = db.Column(db.Integer, nullable=False, index=True)
 
     @classmethod
     def update_spider_instances(cls, project_id, spider_instance_list):
@@ -103,17 +103,17 @@ class JobInstance(Base):
     __tablename__ = 'sk_job_instance'
 
     spider_name = db.Column(db.String(100), nullable=False, index=True)
-    project_id = db.Column(db.INTEGER, nullable=False, index=True)
+    project_id = db.Column(db.Integer, nullable=False, index=True)
     tags = db.Column(db.Text)  # job tag(split by , )
     spider_arguments = db.Column(db.Text)  # job execute arguments(split by , ex.: arg1=foo,arg2=bar)
-    priority = db.Column(db.INTEGER)
+    priority = db.Column(db.Integer)
     desc = db.Column(db.Text)
     cron_minutes = db.Column(db.String(20), default="0")
     cron_hour = db.Column(db.String(20), default="*")
     cron_day_of_month = db.Column(db.String(20), default="*")
     cron_day_of_week = db.Column(db.String(20), default="*")
     cron_month = db.Column(db.String(20), default="*")
-    enabled = db.Column(db.INTEGER, default=0)  # 0/-1
+    enabled = db.Column(db.Integer, default=0)  # 0/-1
     run_type = db.Column(db.String(20))  # periodic/onetime
 
     def to_dict(self):
@@ -150,13 +150,13 @@ class SpiderStatus():
 class JobExecution(Base):
     __tablename__ = 'sk_job_execution'
 
-    project_id = db.Column(db.INTEGER, nullable=False, index=True)
+    project_id = db.Column(db.Integer, nullable=False, index=True)
     service_job_execution_id = db.Column(db.String(50), nullable=False, index=True)
-    job_instance_id = db.Column(db.INTEGER, nullable=False, index=True)
-    create_time = db.Column(db.DATETIME)
-    start_time = db.Column(db.DATETIME)
-    end_time = db.Column(db.DATETIME)
-    running_status = db.Column(db.INTEGER, default=SpiderStatus.PENDING)
+    job_instance_id = db.Column(db.Integer, nullable=False, index=True)
+    create_time = db.Column(db.DateTime)
+    start_time = db.Column(db.DateTime)
+    end_time = db.Column(db.DateTime)
+    running_status = db.Column(db.Integer, default=SpiderStatus.PENDING)
     running_on = db.Column(db.Text)
 
     def to_dict(self):
