@@ -1,3 +1,4 @@
 *.pyc
 SpiderKeeper.db
 .vscode/
+env/
