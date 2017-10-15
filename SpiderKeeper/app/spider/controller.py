@@ -480,11 +480,13 @@ def utility_processor():
         return readable_time(total_seconds)
 
     def readable_time(total_seconds):
+        if type(total_seconds) == datetime.timedelta:
+            total_seconds = total_seconds.total_seconds()
         if not total_seconds:
             return '-'
-        if total_seconds / 60 == 0:
-            return '%s s' % total_seconds
-        if total_seconds / 3600 == 0:
+        if int(total_seconds) / 60 == 0:
+            return '%s s' % int(total_seconds)
+        if int(total_seconds) / 3600 == 0:
             return '%s m' % int(total_seconds / 60)
         return '%s h %s m' % (int(total_seconds / 3600), int((total_seconds % 3600) / 60))
 
