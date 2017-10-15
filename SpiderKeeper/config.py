@@ -2,7 +2,7 @@
 import os
 from os import environ
 
-DEBUG = FALSE
+DEBUG = False
 
 # Define the application directory
 
