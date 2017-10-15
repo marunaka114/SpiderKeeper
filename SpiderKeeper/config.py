@@ -2,14 +2,14 @@
 import os
 from os import environ
 
-DEBUG = True
+DEBUG = False
 
 # Define the application directory
 
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(os.path.abspath('.'), 'SpiderKeeper.db')
+SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL') if not DEBUG else 'sqlite:///' + os.path.join(os.path.abspath('.'), 'SpiderKeeper.db')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 DATABASE_CONNECT_OPTIONS = {}
 
@@ -34,10 +34,10 @@ LOG_LEVEL = 'INFO'
 
 # spider services
 SERVER_TYPE = 'scrapyd'
-SERVERS = [environ.get('SCRAPYD_URI')]
+SERVERS = [environ.get('SCRAPYD_URI', 'http://127.0.0.1:7777')]
 
 # basic auth
 NO_AUTH = False
-BASIC_AUTH_USERNAME = environ.get('AUTH_USR')
-BASIC_AUTH_PASSWORD = environ.get('AUTH_PWD')
+BASIC_AUTH_USERNAME = environ.get('AUTH_USR') if not DEBUG else "admin"
+BASIC_AUTH_PASSWORD = environ.get('AUTH_PWD') if not DEBUG else "admin"
 BASIC_AUTH_FORCE = True
